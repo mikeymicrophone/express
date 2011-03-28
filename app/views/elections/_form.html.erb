@@ -1,0 +1,33 @@
+<%= form_for(@election) do |f| %>
+  <% if @election.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@election.errors.count, "error") %> prohibited this election from being saved:</h2>
+
+      <ul>
+      <% @election.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :office %><br />
+    <%= f.text_field :office %>
+  </div>
+  <div class="field">
+    <%= f.label :start %><br />
+    <%= f.datetime_select :start %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br />
+    <%= f.datetime_select :end %>
+  </div>
+  <div class="field">
+    <%= f.label :supervisor %><br />
+    <%= f.text_field :supervisor %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

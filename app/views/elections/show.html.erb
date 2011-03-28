@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Office:</b>
+  <%= @election.office %>
+</p>
+
+<p>
+  <b>Start:</b>
+  <%= @election.start %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%= @election.end %>
+</p>
+
+<p>
+  <b>Supervisor:</b>
+  <%= @election.supervisor %>
+</p>
+
+
+<%= link_to 'Edit', edit_election_path(@election) %> |
+<%= link_to 'Back', elections_path %>

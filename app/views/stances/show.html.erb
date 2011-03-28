@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @stance.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @stance.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_stance_path(@stance) %> |
+<%= link_to 'Back', stances_path %>

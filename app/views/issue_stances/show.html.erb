@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Issue:</b>
+  <%= @issue_stance.issue %>
+</p>
+
+<p>
+  <b>Stance:</b>
+  <%= @issue_stance.stance %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @issue_stance.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_issue_stance_path(@issue_stance) %> |
+<%= link_to 'Back', issue_stances_path %>

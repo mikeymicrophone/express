@@ -1,0 +1,25 @@
+<h1>Listing stances</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stances.each do |stance| %>
+  <tr>
+    <td><%= stance.name %></td>
+    <td><%= stance.description %></td>
+    <td><%= link_to 'Show', stance %></td>
+    <td><%= link_to 'Edit', edit_stance_path(stance) %></td>
+    <td><%= link_to 'Destroy', stance, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stance', new_stance_path %>

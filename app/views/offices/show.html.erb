@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<% @office.elections.each do |e| %>
+  <%= link_to e.end, e %>
+<% end %>
+
 <p>
   <b>Organization:</b>
-  <%= @office.organization %>
+  <%= link_to @office.organization.name, @office.organization %>
 </p>
 
 <p>

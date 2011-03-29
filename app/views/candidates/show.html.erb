@@ -2,7 +2,7 @@
 
 <p>
   <b>Election:</b>
-  <%= @candidate.election %>
+  <%= link_to @candidate.election.office.name, @candidate.election %>
 </p>
 
 <p>
@@ -12,7 +12,7 @@
 
 <p>
   <b>Party:</b>
-  <%= @candidate.party %>
+  <%= link_to @candidate.party.name, @candidate.party %>
 </p>
 
 

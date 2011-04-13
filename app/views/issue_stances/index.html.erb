@@ -12,8 +12,8 @@
 
 <% @issue_stances.each do |issue_stance| %>
   <tr>
-    <td><%= issue_stance.issue %></td>
-    <td><%= issue_stance.stance %></td>
+    <td><%= link_to_name issue_stance.issue %></td>
+    <td><%= link_to_name issue_stance.stance %></td>
     <td><%= issue_stance.description %></td>
     <td><%= link_to 'Show', issue_stance %></td>
     <td><%= link_to 'Edit', edit_issue_stance_path(issue_stance) %></td>

@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :office %><br />
-    <%= f.text_field :office %>
+    <%= f.select :office_id, Office.map_name_and_id('name_organization') %>
   </div>
   <div class="field">
     <%= f.label :start %><br />

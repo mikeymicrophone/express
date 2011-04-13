@@ -1,21 +1,11 @@
 <h1>Listing offices</h1>
 
 <table>
-  <tr>
-    <th>Organization</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Homepage</th>
-    <th>Phone</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @offices.each do |office| %>
   <tr>
-    <td><%= office.organization %></td>
-    <td><%= office.name %></td>
+		<td><%= office.name %> of <%= link_to_name office.organization %></td>
+	</tr>
+	<tr>
     <td><%= office.description %></td>
     <td><%= office.homepage %></td>
     <td><%= office.phone %></td>

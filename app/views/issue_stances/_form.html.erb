@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :issue %><br />
-    <%= f.text_field :issue %>
+    <%= f.select :issue_id, Issue.map_name_and_id %>
   </div>
   <div class="field">
     <%= f.label :stance %><br />
-    <%= f.text_field :stance %>
+    <%= f.select :stance_id, Stance.map_name_and_id %>
   </div>
   <div class="field">
     <%= f.label :description %><br />

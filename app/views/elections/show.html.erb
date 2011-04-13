@@ -6,17 +6,17 @@
 
 <p>
   <b>Office:</b>
-  <%= link_to @election.office.name, @election.office %>
+  <%= link_to @election.office.name, @election.office %> of <%= link_to @election.organization.name, @election.organization %>
 </p>
 
 <p>
-  <b>Start:</b>
-  <%= @election.start %>
+  <b>Starts:</b>
+  <%= @election.start.strftime("%b %d, %Y") %>
 </p>
 
 <p>
-  <b>End:</b>
-  <%= @election.end %>
+  <b>Votes counted on:</b>
+  <%= @election.end.strftime("%b %d, %Y") %>
 </p>
 
 <p>

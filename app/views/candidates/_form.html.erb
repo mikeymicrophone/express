@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :election %><br />
-    <%= f.text_field :election %>
+    <%= f.select :election_id, Election.map_name_and_id %>
   </div>
   <div class="field">
     <%= f.label :name %><br />
@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :party %><br />
-    <%= f.text_field :party %>
+    <%= f.select :party_id, Party.map_name_and_id, :include_blank => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

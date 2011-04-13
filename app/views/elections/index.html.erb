@@ -3,8 +3,8 @@
 <table>
   <tr>
     <th>Office</th>
-    <th>Start</th>
-    <th>End</th>
+    <th>Started?</th>
+    <th>Ends</th>
     <th>Supervisor</th>
     <th></th>
     <th></th>
@@ -13,9 +13,9 @@
 
 <% @elections.each do |election| %>
   <tr>
-    <td><%= election.office %></td>
-    <td><%= election.start %></td>
-    <td><%= election.end %></td>
+    <td><%= link_to_name election.office, 'name_organization' %></td>
+    <td><%= election.start < Time.now %></td>
+    <td><%= election.end.strftime("%b %d") %></td>
     <td><%= election.supervisor %></td>
     <td><%= link_to 'Show', election %></td>
     <td><%= link_to 'Edit', edit_election_path(election) %></td>

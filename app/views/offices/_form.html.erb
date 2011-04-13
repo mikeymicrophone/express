@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :organization %><br />
-    <%= f.text_field :organization %>
+    <%= f.select :organization_id, Organization.map_name_and_id %>
   </div>
   <div class="field">
     <%= f.label :name %><br />

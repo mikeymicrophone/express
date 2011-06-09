@@ -6,4 +6,11 @@ module ApplicationHelper
       link_to obj.name, obj rescue nil
     end
   end
+  
+  def blueprints_links
+    link_to('generate organization', 'build/org') + ' ' +
+    link_to('generate office', 'build/off') + ' ' +
+    link_to('generate election', 'build/elec') + ' ' +
+    link_to('generate candidate', 'build/cand')
+  end
 end

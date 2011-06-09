@@ -2,13 +2,12 @@
 // This file is automatically included by javascript_include_tag :defaults
 function update_vote(num, candidate_id) {
   $('#support_level_candidate_' + candidate_id).text(num);
-  
-  // send data to the votes controller
-  
 };
 
 $(function() {
   $('.candidate_vote_slider').mouseup(function(element) {
-    console.log(element.currentTarget.id);
+    var vote_val = $(element.currentTarget).val();
+    var candidate = $(element.currentTarget).data('candidate_id');
+    $.post('/votes', {vote: {support: vote_val, candidate_id: candidate}, authenticity_token: $('[name="authenticity_token"]').val()});
   });
 });

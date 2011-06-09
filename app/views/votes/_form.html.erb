@@ -1,0 +1,37 @@
+<%= form_for(@vote) do |f| %>
+  <% if @vote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+
+      <ul>
+      <% @vote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :candidate %><br />
+    <%= f.text_field :candidate %>
+  </div>
+  <div class="field">
+    <%= f.label :voter %><br />
+    <%= f.text_field :voter %>
+  </div>
+  <div class="field">
+    <%= f.label :support %><br />
+    <%= f.text_field :support %>
+  </div>
+  <div class="field">
+    <%= f.label :current %><br />
+    <%= f.check_box :current %>
+  </div>
+  <div class="field">
+    <%= f.label :authorized %><br />
+    <%= f.check_box :authorized %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

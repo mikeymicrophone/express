@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110328165921) do
+ActiveRecord::Schema.define(:version => 20110512214505) do
 
   create_table "candidates", :force => true do |t|
     t.integer  "election_id"
@@ -98,5 +98,15 @@ ActiveRecord::Schema.define(:version => 20110328165921) do
   add_index "voters", ["confirmation_token"], :name => "index_voters_on_confirmation_token", :unique => true
   add_index "voters", ["email"], :name => "index_voters_on_email", :unique => true
   add_index "voters", ["reset_password_token"], :name => "index_voters_on_reset_password_token", :unique => true
+
+  create_table "votes", :force => true do |t|
+    t.integer  "candidate_id"
+    t.integer  "voter_id"
+    t.integer  "support"
+    t.boolean  "current"
+    t.boolean  "authorized"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

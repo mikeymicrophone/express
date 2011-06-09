@@ -19,6 +19,8 @@ Express::Application.routes.draw do
 
   resources :organizations
   
+  match "build/:action/:id" => "blueprints"
+  
   root :to => "elections#index"
 
   # The priority is based upon order of creation:

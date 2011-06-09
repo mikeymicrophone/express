@@ -41,10 +41,12 @@ class VotesController < ApplicationController
   # POST /votes.xml
   def create
     params[:vote][:voter_id] ||= current_voter.id
+    params[:vote][:current] = true
     @vote = Vote.new(params[:vote])
 
     respond_to do |format|
       if @vote.save
+        Vote.find_by_voter_id_and_candidate_id_and_current(@vote.voter_id, @vote.candidate_id, true, :conditions => ['id != ?', @vote.id]).update_attribute(:current, false)
         format.html { redirect_to(@vote, :notice => 'Vote was successfully created.') }
         format.xml  { render :xml => @vote, :status => :created, :location => @vote }
         format.js

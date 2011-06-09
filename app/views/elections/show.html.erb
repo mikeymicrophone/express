@@ -8,7 +8,7 @@
 	<% @election.candidates.each do |c| %>
 	  <%= div_for c do %>
 		  <%= link_to c.name, c %>
-		  <input type="range" min="1" max="500" min-width="500" name="<%= dom_id(c) %>" id="<%= dom_id(c, 'vote') %>" class="candidate_vote_slider" onchange="update_vote(this.value, <%= c.id %>)" data-candidate_id="<%= c.id %>"/>
+		  <input type="range" min="1" max="500" min-width="500" name="<%= dom_id(c) %>" id="<%= dom_id(c, 'vote') %>" class="candidate_vote_slider" onchange="update_vote(this.value, <%= c.id %>)" data-candidate_id="<%= c.id %>" value="<%= Vote.find_by_candidate_id_and_voter_id_and_current(c.id, current_voter.id, true).andand.support %>"/>
 		  <%= div_for c, :support_level do %>
 		  <% end %>
 		<% end %>

@@ -3,7 +3,6 @@ class CreateCandidates < ActiveRecord::Migration
     create_table :candidates do |t|
       t.belongs_to :election
       t.string :name
-      t.belongs_to :party
 
       t.timestamps
     end

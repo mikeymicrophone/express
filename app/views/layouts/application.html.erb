@@ -3,12 +3,11 @@
 <head>
   <title>Express</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'jquery-1.6.min', 'application' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
   <%= render :partial => 'shared/resource_navigation' %>
-	<p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
 

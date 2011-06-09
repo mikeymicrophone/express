@@ -5,10 +5,10 @@
 <h2>offices and elections</h2>
 
 <% @organization.offices.each do |office| %>
-  <%= link_to office.name, office %>
+  <b><%= link_to office.name, office %></b>
   <%= div_for office, :elections do %>
 	  <% office.elections.each do |election| %>
-	    <%= link_to election.end.strftime("%b %Y"), election %>
+	    <%= link_to election.end_date.strftime("%b %Y"), election %>
 	    <h3>candidates</h3>
 	    <% election.candidates.each do |candidate| %>
 	      <%= link_to candidate.name, candidate %>
@@ -24,7 +24,3 @@
 <p>
   <%= @organization.phone %>
 </p>
-
-
-<%= link_to 'Edit', edit_organization_path(@organization) %> |
-<%= link_to 'Back', organizations_path %>

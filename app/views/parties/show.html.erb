@@ -1,9 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<% @party.candidates.each do |c| %>
-  <%= link_to c.name, c %>
-<% end %>
-
 <p>
   <b>Name:</b>
   <%= @party.name %>

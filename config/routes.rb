@@ -1,4 +1,6 @@
 Express::Application.routes.draw do
+  resources :votes
+
   devise_for :voters
 
   resources :issue_stances

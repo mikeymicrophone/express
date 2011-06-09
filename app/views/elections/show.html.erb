@@ -1,29 +1,32 @@
 <p id="notice"><%= notice %></p>
+<h2>
+  <%= link_to @election.office.name, @election.office %> of <%= link_to @election.organization.name, @election.organization %>
+</h2>
 
-<% @election.candidates.each do |c| %>
-  <%= link_to c.name, c %>
+<%= div_for @election, :candidates do %>
+  <h2>Candidates</h2>
+	<% @election.candidates.each do |c| %>
+	  <%= div_for c do %>
+		  <%= link_to c.name, c %>
+		  <input type="range" min="1" max="500" min-width="500" name="<%= dom_id(c) %>" id="<%= dom_id(c, 'vote') %>" class="candidate_vote_slider" onchange="update_vote(this.value, <%= c.id %>)"/>
+		  <%= div_for c, :support_level do %>
+		  <% end %>
+		<% end %>
+	<% end %>
+<% end %>
+<%= link_to_function 'add candidate', "$('#new_candidate').toggle('blind')" %>
+<%= form_for @election.candidates.new, :html => {:style => 'display:none;'} do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit :nominate %>
+  <%= f.hidden_field :election_id %>
 <% end %>
 
 <p>
-  <b>Office:</b>
-  <%= link_to @election.office.name, @election.office %> of <%= link_to @election.organization.name, @election.organization %>
+  <%= @election.start_date.strftime("%b %d, %Y") %>-
+  <%= @election.end_date.strftime("%b %d, %Y") %>
 </p>
 
 <p>
-  <b>Starts:</b>
-  <%= @election.start.strftime("%b %d, %Y") %>
-</p>
-
-<p>
-  <b>Votes counted on:</b>
-  <%= @election.end.strftime("%b %d, %Y") %>
-</p>
-
-<p>
-  <b>Supervisor:</b>
+  Supervisor:
   <%= @election.supervisor %>
 </p>
-
-
-<%= link_to 'Edit', edit_election_path(@election) %> |
-<%= link_to 'Back', elections_path %>

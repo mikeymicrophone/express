@@ -4,6 +4,6 @@ class Election < ActiveRecord::Base
   has_many :candidates
   
   def name
-    "#{office.name_organization} - #{self.end.strftime("%b %Y")}"
+    "#{office.name_organization} - #{self.end_date.strftime("%b %Y")}"
   end
 end

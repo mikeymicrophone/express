@@ -15,15 +15,14 @@ ActiveRecord::Schema.define(:version => 20110328165921) do
   create_table "candidates", :force => true do |t|
     t.integer  "election_id"
     t.string   "name"
-    t.integer  "party_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "elections", :force => true do |t|
     t.integer  "office_id"
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.string   "supervisor"
     t.datetime "created_at"
     t.datetime "updated_at"

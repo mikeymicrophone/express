@@ -1,20 +1,9 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Election:</b>
-  <%= link_to @candidate.election.office.name, @candidate.election %>
-</p>
-
-<p>
-  <b>Name:</b>
+<h1>
   <%= @candidate.name %>
-</p>
+</h1>
 
 <p>
-  <b>Party:</b>
-  <%= link_to @candidate.party.name, @candidate.party %>
+  <b>is a candidate for 
+  <%= link_to @candidate.election.office.name, @candidate.election %></b>
 </p>
-
-
-<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
-<%= link_to 'Back', candidates_path %>

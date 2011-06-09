@@ -4,7 +4,6 @@
 <% @candidates.each do |candidate| %>
   <tr>
     <td><%= candidate.name %></td>
-    <td><%= link_to_name candidate.party %></td>
     <td><%= link_to_name candidate.election %></td>
     <td><%= link_to 'Show', candidate %></td>
     <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>

@@ -19,10 +19,6 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :party %><br />
-    <%= f.select :party_id, Party.map_name_and_id, :include_blank => true %>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

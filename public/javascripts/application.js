@@ -11,13 +11,13 @@ function update_baseline(num, election_id) {
 $(function() {
   $('.candidate_vote_slider').mouseup(function(element) {
     var vote_val = $(element.currentTarget).val();
-    var candidate = $(element.currentTarget).data('candidate_id');
-    $.post('/votes', {vote: {support: vote_val, candidate_id: candidate}, authenticity_token: $('[name="authenticity_token"]').val()});
+    var candidate_id = $(element.currentTarget).data('candidate_id');
+    $.post('/votes', {vote: {support: vote_val, candidate_id: candidate_id}, authenticity_token: $('[name="csrf-token"]').attr('content')});
   });
   
   $('.election_baseline_slider').mouseup(function(element) {
     var baseline_val = $(element.currentTarget).val();
-    var election = $(element.currentTarget).data('election_id');
-    $.post('/baselines', {baseline: {level: baseline_val, election_id: election}, authenticity_token: $('[name="authenticity_token"]').val()});
+    var election_id = $(element.currentTarget).data('election_id');
+    $.post('/baselines', {baseline: {level: baseline_val, election_id: election_id}, authenticity_token: $('[name="csrf-token"]').attr('content')});
   });
 });

@@ -1,3 +1,17 @@
 .candidate div.support_level_candidate {
 	float: right;
 }
+
+.candidate .vote_on_candidate, .election_baseline_slider {
+  display: inline;
+  position: absolute;
+  left: 250px;
+}
+
+.candidate .vote_on_candidate input, .election_baseline_slider {
+  width: 500px;
+}
+
+.chosen a {
+  font-weight: bold;
+}

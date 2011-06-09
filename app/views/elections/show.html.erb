@@ -6,15 +6,18 @@
 <%= div_for @election, :candidates do %>
   <h2>Candidates</h2>
 	<% @election.candidates.each do |c| %>
-	  <%= div_for c do %>
+	  <%= div_for c, :class => (c.chosen_by?(current_voter) ? 'chosen' : '') do %>
 		  <%= link_to c.name, c %>
-		  <input type="range" min="1" max="500" min-width="500" name="<%= dom_id(c) %>" id="<%= dom_id(c, 'vote') %>" class="candidate_vote_slider" onchange="update_vote(this.value, <%= c.id %>)" data-candidate_id="<%= c.id %>" value="<%= Vote.find_by_candidate_id_and_voter_id_and_current(c.id, current_voter.id, true).andand.support %>"/>
+		  <%= div_for c, :vote_on do %>
+			  <input type="range" min="1" max="500" min-width="500" name="<%= dom_id(c) %>" id="<%= dom_id(c, 'vote') %>" class="candidate_vote_slider" onchange="update_vote(this.value, <%= c.id %>)" data-candidate_id="<%= c.id %>" value="<%= Vote.find_by_candidate_id_and_voter_id_and_current(c.id, current_voter.id, true).andand.support || 0 %>"/>
+			<% end %>
 		  <%= div_for c, :support_level do %>
 				<%= Vote.find_by_candidate_id_and_voter_id_and_current(c.id, current_voter.id, true).andand.support %>
 		  <% end %>
 		<% end %>
 	<% end %>
 <% end %>
+<hr>
 <input type="range" min="1" max="500" min-width="500" name="<%= dom_id(@election) %>" id="<%= dom_id(@election, 'baseline') %>" class="election_baseline_slider" onchange="update_baseline(this.value, <%= @election.id %>)" data-election_id="<%= @election.id %>" value="<%= Baseline.find_by_election_id_and_voter_id_and_current(@election.id, current_voter.id, true).andand.level %>"/>
 <%= div_for @election, :baseline_level_for do %>
 	<%= Baseline.find_by_election_id_and_voter_id_and_current(@election.id, current_voter.id, true).andand.level %>

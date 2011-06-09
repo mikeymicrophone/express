@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Election:</b>
+  <%= @baseline.election %>
+</p>
+
+<p>
+  <b>Voter:</b>
+  <%= @baseline.voter %>
+</p>
+
+<p>
+  <b>Current:</b>
+  <%= @baseline.current %>
+</p>
+
+
+<%= link_to 'Edit', edit_baseline_path(@baseline) %> |
+<%= link_to 'Back', baselines_path %>

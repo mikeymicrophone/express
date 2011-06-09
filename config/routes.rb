@@ -1,4 +1,6 @@
 Express::Application.routes.draw do
+  resources :baselines
+
   resources :votes
 
   devise_for :voters

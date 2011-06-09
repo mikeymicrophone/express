@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110512214505) do
+ActiveRecord::Schema.define(:version => 20110609011236) do
+
+  create_table "baselines", :force => true do |t|
+    t.integer  "election_id"
+    t.integer  "voter_id"
+    t.integer  "level"
+    t.boolean  "current"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "candidates", :force => true do |t|
     t.integer  "election_id"

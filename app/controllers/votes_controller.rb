@@ -42,6 +42,7 @@ class VotesController < ApplicationController
   def create
     params[:vote][:voter_id] ||= current_voter.id
     params[:vote][:current] = true
+    params[:vote][:authorized] = true
     @vote = Vote.new(params[:vote])
 
     respond_to do |format|

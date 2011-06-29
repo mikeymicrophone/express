@@ -2,10 +2,22 @@
 // This file is automatically included by javascript_include_tag :defaults
 function update_vote(num, candidate_id) {
   $('#support_level_candidate_' + candidate_id).text(num);
+  
+  if (num > $('.election_baseline_slider').val()) {
+    
+  }
 };
 
 function update_baseline(num, election_id) {
   $('#baseline_level_for_election_' + election_id).text(num);
+  
+  $.each($('.candidate'), function(index, candidate) {
+    if ($(candidate).children(':has(input)').children('input').val() < num) {
+      $(candidate).removeClass('chosen');
+    } else if ($(candidate).children(':has(input)').children('input').val() >= num) {
+      $(candidate).addClass('chosen');
+    }
+  });
 };
 
 $(function() {

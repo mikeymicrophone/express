@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Candidate</th>
-    <th>Voter</th>
     <th>Support</th>
     <th>Current</th>
     <th>Authorized</th>
@@ -14,8 +13,7 @@
 
 <% @votes.each do |vote| %>
   <tr>
-    <td><%= vote.candidate %></td>
-    <td><%= vote.voter %></td>
+    <td><%= vote.candidate.name %></td>
     <td><%= vote.support %></td>
     <td><%= vote.current %></td>
     <td><%= vote.authorized %></td>

@@ -7,3 +7,6 @@
   <b>is a candidate for 
   <%= link_to @candidate.election.office.name, @candidate.election %></b>
 </p>
+<p>
+  <%= days_until_election @candidate %>, <%= support_level @candidate %>
+</p>

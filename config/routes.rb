@@ -3,7 +3,10 @@ Express::Application.routes.draw do
 
   resources :votes
 
-  devise_for :voters
+  devise_for :voters do
+    match '/login' => 'devise/sessions#new', :as => :login
+    match '/logout' => 'devise/sessions#destroy', :as => :logout
+  end
 
   resources :issue_stances
 
@@ -15,7 +18,12 @@ Express::Application.routes.draw do
 
   resources :candidates
 
-  resources :elections
+  resources :elections do
+    member do
+      get 'poll_results'
+    end
+    resources :votes
+  end
 
   resources :offices
 

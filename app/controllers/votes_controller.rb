@@ -2,7 +2,11 @@ class VotesController < ApplicationController
   # GET /votes
   # GET /votes.xml
   def index
-    @votes = Vote.all
+    @votes = if params[:election_id]
+      Election.find(params[:election_id]).votes
+    else
+      Vote.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

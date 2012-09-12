@@ -4,5 +4,6 @@ class Vote < ActiveRecord::Base
   
   scope :current, :conditions => {:current => true}
   scope :authorized, where(:authorized => true)
-  scope :by, lambda { |voter| {:conditions => {:voter_id => voter.id}} }
+  scope :by, lambda { |voter| {:conditions =>    
+    {:voter_id => voter.id}} }
 end

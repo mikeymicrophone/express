@@ -13,4 +13,12 @@ module ApplicationHelper
     link_to('generate election', 'build/elec') + ' ' +
     link_to('generate candidate', 'build/cand')
   end
+  
+  def login_links
+    # if logged_in?
+      link_to('log out', logout_path)
+    # else
+      # link_to 'log in', login_path
+    # end
+  end
 end

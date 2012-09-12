@@ -3,6 +3,7 @@ class Election < ActiveRecord::Base
   has_one :organization, :through => :office
   has_many :candidates
   has_many :baselines
+  has_many :votes, :through => :candidates
   
   def name
     "#{office.name_organization} - #{self.end_date.strftime("%b %Y")}"
@@ -22,5 +23,9 @@ class Election < ActiveRecord::Base
       @winner = [candidate, vote_count] if vote_count > @winner[1]
     end
     return @winner
+  end
+  
+  def days_left
+    ((end_date - DateTime.now) / 1.day).to_i
   end
 end

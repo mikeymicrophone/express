@@ -21,6 +21,10 @@ class ElectionsController < ApplicationController
     end
   end
 
+  def poll_results
+    @election = Election.find params[:id]
+  end
+
   # GET /elections/new
   # GET /elections/new.xml
   def new

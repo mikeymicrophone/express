@@ -1,5 +1,7 @@
 class Candidate < ActiveRecord::Base
   belongs_to :election
+  has_one :office, :through => :election
+  has_one :organization, :through => :office
   has_many :votes
   has_many :candidate_stances
   # has_many :issue_stances

@@ -3,11 +3,19 @@
 <table>
 <% @candidates.each do |candidate| %>
   <tr>
-    <td><%= candidate.name %></td>
+    <td><%= link_to_name candidate %></td>
+    <td>
+      <%= div_for candidate, :class => (candidate.chosen_by?(current_voter) ? 'chosen' : '') do %>
+		    <%= div_for candidate, :vote_on do %>
+			    <input type="range" min="1" max="500" min-width="500" name="<%= dom_id(candidate) %>" id="<%= dom_id(candidate, 'vote') %>" class="candidate_vote_slider" onchange="update_vote(this.value, <%= candidate.id %>)" data-candidate_id="<%= candidate.id %>" value="<%= Vote.find_by_candidate_id_and_voter_id_and_current(candidate.id, current_voter.id, true).andand.support || 0 %>"/>
+			  <% end %>
+		    <%= div_for candidate, :support_level do %>
+				  <%= Vote.find_by_candidate_id_and_voter_id_and_current(candidate.id, current_voter.id, true).andand.support %>
+		    <% end %>
+  		<% end %>
+  	</td>
     <td><%= link_to_name candidate.election %></td>
-    <td><%= link_to 'Show', candidate %></td>
-    <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
-    <td><%= link_to 'Destroy', candidate, :confirm => 'Are you sure?', :method => :delete %></td>
+</td>
   </tr>
 <% end %>
 </table>

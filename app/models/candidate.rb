@@ -1,7 +1,12 @@
 class Candidate < ActiveRecord::Base
   belongs_to :election
   has_many :votes
+  has_many :candidate_stances
   # has_many :issue_stances
+  
+  def name_and_office
+    name + " for " + election.office.name
+  end
   
   def chosen_by? voter
     votes.current.by(voter).first.andand.support.andand.>(election.baselines.current.by(voter).first.andand.level)

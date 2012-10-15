@@ -1,4 +1,6 @@
 Express::Application.routes.draw do
+  resources :candidate_stances
+
   resources :baselines
 
   resources :votes

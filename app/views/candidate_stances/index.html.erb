@@ -1,0 +1,27 @@
+<h1>Listing candidate_stances</h1>
+
+<table>
+  <tr>
+    <th>Candidate</th>
+    <th>Issue stance</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @candidate_stances.each do |candidate_stance| %>
+  <tr>
+    <td><%= candidate_stance.candidate %></td>
+    <td><%= candidate_stance.issue_stance %></td>
+    <td><%= candidate_stance.description %></td>
+    <td><%= link_to 'Show', candidate_stance %></td>
+    <td><%= link_to 'Edit', edit_candidate_stance_path(candidate_stance) %></td>
+    <td><%= link_to 'Destroy', candidate_stance, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Candidate stance', new_candidate_stance_path %>

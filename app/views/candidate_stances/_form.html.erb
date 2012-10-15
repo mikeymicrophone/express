@@ -1,0 +1,29 @@
+<%= form_for(@candidate_stance) do |f| %>
+  <% if @candidate_stance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@candidate_stance.errors.count, "error") %> prohibited this candidate_stance from being saved:</h2>
+
+      <ul>
+      <% @candidate_stance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :candidate_id %><br />
+    <%= f.select :candidate_id, options_from_collection_for_select(Candidate.all, :id, :name_and_office) %>
+  </div>
+  <div class="field">
+    <%= f.label :issue_stance_id %><br />
+    <%= f.select :issue_stance_id, options_from_collection_for_select(IssueStance.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

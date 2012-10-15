@@ -10,6 +10,31 @@
   <%= @stance.description %>
 </p>
 
+<h2>Issues to which this stance is applied</h2>
+<div id="issues">
+  <% @stance.issue_stances.each do |issue_stance| %>
+    <%= div_for issue_stance do %>
+      <%= link_to_name issue_stance.issue %>
+      <%= div_for issue_stance, :candidates_with do %>
+        <% issue_stance.candidates.each do |candidate| %>
+          <%= div_for candidate do %>
+            <%= link_to_name candidate %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<h2>Elections in which this issue is relevant</h2>
+<div id="elections">
+  <% @stance.elections.each do |election| %>
+    <%= div_for election do %>
+      <%= link_to_name election %>
+    <% end %>
+  <% end %>
+</div>
+
 
 <%= link_to 'Edit', edit_stance_path(@stance) %> |
 <%= link_to 'Back', stances_path %>

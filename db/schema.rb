@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110609011236) do
+ActiveRecord::Schema.define(:version => 20121015171830) do
 
   create_table "baselines", :force => true do |t|
     t.integer  "election_id"
@@ -20,6 +21,17 @@ ActiveRecord::Schema.define(:version => 20110609011236) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "candidate_stances", :force => true do |t|
+    t.integer  "candidate_id"
+    t.integer  "issue_stance_id"
+    t.text     "description"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "candidate_stances", ["candidate_id"], :name => "index_candidate_stances_on_candidate_id"
+  add_index "candidate_stances", ["issue_stance_id"], :name => "index_candidate_stances_on_issue_stance_id"
 
   create_table "candidates", :force => true do |t|
     t.integer  "election_id"

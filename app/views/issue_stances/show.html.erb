@@ -15,6 +15,24 @@
   <%= @issue_stance.description %>
 </p>
 
+<h2>Candidates with this stance:</h2>
+<div id="candidates">
+  <% @issue_stance.candidates.each do |candidate| %>
+    <%= div_for candidate do %>
+      <%= link_to_name candidate, :name_and_office %>
+    <% end %>
+  <% end %>
+</div>
+
+<h2>Other stances on this issue:</h2>
+<div id="stances">
+  <% IssueStance.on_issue(@issue_stance.issue).reject { |i| i.id == @issue_stance.id }.each do |issue_stance| %>
+    <%= div_for issue_stance do %>
+      <%= link_to_name issue_stance.stance %>
+    <% end %>
+  <% end %>
+</div>
+
 
 <%= link_to 'Edit', edit_issue_stance_path(@issue_stance) %> |
 <%= link_to 'Back', issue_stances_path %>

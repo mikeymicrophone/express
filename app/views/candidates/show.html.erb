@@ -10,3 +10,12 @@
 <p>
   <%= days_until_election @candidate %>, <%= support_level @candidate %>
 </p>
+
+<h2>Stances:</h2>
+<div id="candidate_stances">
+  <% @candidate.candidate_stances.each do |candidate_stance| %>
+    <%= div_for candidate_stance do %>
+      <%= link_to_name candidate_stance.issue_stance %>
+    <% end %>
+  <% end %>
+</div>

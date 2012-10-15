@@ -10,6 +10,14 @@
   <%= @issue.description %>
 </p>
 
+<h2>Stances on this issue:</h2>
+<div id="stances">
+  <% @issue.stances.each do |stance| %>
+    <%= div_for stance do %>
+      <%= link_to_name stance %>
+    <% end %>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_issue_path(@issue) %> |
 <%= link_to 'Back', issues_path %>
